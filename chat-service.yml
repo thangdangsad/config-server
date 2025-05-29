@@ -1,0 +1,6 @@
+server:
+  port: 8082
+
+custom:
+  auth:
+    jwt-secret: xIllBhvQTHZLRu6wlhLcZpIDqPNkjMAeZNXkM9/crVIPmQKx3PmznB3MR/X2usri
