@@ -1,6 +1,28 @@
 server:
   port: 8080
-
-custom:
-  auth:
-    jwt-secret: xIllBhvQTHZLRu6wlhLcZpIDqPNkjMAeZNXkM9/crVIPmQKx3PmznB3MR/X2usri
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/api/auth/**
+        - id: chat-service
+          uri: lb://chat-service
+          predicates:
+            - Path=/api/chat/**
+        - id: follow-service
+          uri: lb://follow-service
+          predicates:
+            - Path=/api/follow/**
+        - id: post-service
+          uri: lb://post-service
+          predicates:
+            - Path=/api/post/**
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
